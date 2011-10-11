@@ -376,7 +376,7 @@ int main(int argc, char *argv[])
         chown(REQUESTOR_CACHE_PATH, req_uid, req_uid);
     }
 
-    LOGE("sudb - Opening database");
+    //LOGD("sudb - Opening database");
     db = database_init();
     if (!db) {
         LOGE("sudb - Could not open database, prompt user");
@@ -384,12 +384,12 @@ int main(int argc, char *argv[])
         // prompt the user
         dballow = DB_INTERACTIVE;
     } else {
-        LOGE("sudb - Database opened");
+        //LOGD("sudb - Database opened");
         dballow = database_check(db, &su_from, &su_to);
         // Close the database, we're done with it. If it stays open,
         // it will cause problems
         sqlite3_close(db);
-        LOGE("sudb - Database closed");
+        //LOGD("sudb - Database closed");
     }
 
     switch (dballow) {
